@@ -1,0 +1,62 @@
+<app-header></app-header>
+
+<div *ngIf="cart.length==0" class="empty-cart-message row justify-content-center">
+    <h5 class="col-12 text-center mb-3">Cart is empty</h5>
+    <button class="btn btn-primary" routerLink="/">Go back to product list</button>
+</div>
+
+<div *ngIf="cart.length>0" class="cart-container container">
+    <div class="cart-panel justify-content-center mb-3">
+        <div *ngFor="let item of cart" class="cart-item">
+            <img src={{item.url}}>
+            <div class="cart-item-details">
+                <p><b>{{item.name}}</b></p>
+                <p>${{item.price}}</p>
+                <div>
+                    <label for="amount">Amount:</label>
+                    <input class="number-input mx-1" type="number" value={{item.amount}} min=0 max=99 required
+                        [(ngModel)]="item.amount" (ngModelChange)="amountChange(item)">
+                </div>
+            </div>
+        </div>
+        <div>
+            <h1>Total: ${{total}}</h1>
+        </div>
+    </div>
+    <div class="cart-panel justify-content-center">
+        <form #form="ngForm" (ngSubmit)="onSubmit()">
+            <label class="form-margin" for="name">Full name</label>
+            <input class="form-control form-margin" type="text" id="name" name="name" [(ngModel)]="name"
+                #nameInput="ngModel" required minlength="3" placeholder="(minimun 3 characters)">
+            <label class="form-margin" for="address">Address</label>
+            <input class="form-control form-margin" type="text" id="address" name="address" [(ngModel)]="address"
+                #addressInput="ngModel" required minlength="6" placeholder="(minimun 6 characters)">
+            <label class="form-margin" for="cred">Credit card number</label>
+            <input class="form-control form-margin" type="number" id="cred" name="cred" [(ngModel)]="cred"
+                #credInput="ngModel" required min="0" max="9999999999999999" pattern="[0-9]+"
+                placeholder="(16-digit number)">
+            <p class="form-margin">We'll never share your payment details with anyone else.</p>
+            <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Submit</button>
+        </form>
+        <div *ngIf="form.invalid && form.dirty" [ngStyle]="{'color':'red', 'font-size':'12px'}" >
+            <div *ngIf="nameInput.hasError('required')">
+                Please provide a full name.
+            </div>
+            <div *ngIf="nameInput.hasError('minlength')">
+                The full name must contain atleast 3 characters.
+            </div>
+            <div *ngIf="addressInput.hasError('required')">
+                Please provide an address.
+            </div>
+            <div *ngIf="addressInput.hasError('minlength')">
+                An address must contain atleast 6 characters.
+            </div>
+            <div *ngIf="credInput.hasError('required')">
+                Please provide a credit card number.
+            </div>
+            <div *ngIf="credInput.hasError('max')">
+                The credit card number should be 16 digits number.
+            </div>
+        </div>
+    </div>
+</div>

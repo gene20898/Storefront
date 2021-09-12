@@ -1,0 +1,22 @@
+<app-header></app-header>
+<div class="container p-5">
+    <div class="row detail-container">
+        <div class="col-4 detail-item">
+            <img src="{{product.url}}">
+        </div>
+        <div class="col-4 justify-content-left">
+            <h2>{{product.name}}</h2>
+            <p>${{product.price}}</p>
+            <p>{{product.description}}</p>
+            <form (ngSubmit)="addCart()">
+                <select class="select-input" name="amount" [(ngModel)]="amount">
+                    <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" value={{i}}>{{i}}</option>
+                </select>
+                <div class="col-12 justify-content-left px-0">
+                    <button class="btn btn-primary" type="submit">Add to cart</button>
+                </div>
+            </form>
+            <a routerLink="/" class="back-link">← Back to product list</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+.product-image {      
+    list-style-type: none;
+    width: 290px;
+    padding: 20px;
+    margin: 6px 6px;        
+    border: 1px solid #33B5E5;
+  } 
+  
+  .product-container {
+    margin-top: 64px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .select-input {
+    width: 108px;
+    height: 38px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    border: 0.1px solid #818181;
+    padding-left: 8px;
+  }

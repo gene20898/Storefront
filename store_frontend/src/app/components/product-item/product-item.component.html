@@ -1,0 +1,16 @@
+<div class="product-container container align-item-center">
+    <div class="row justify-content-center text-center">
+        <img class="product-image col-12" src={{product.url}} routerLink="details/{{product.id}}">
+        <p class="col-12">{{product.name}}</p>
+        <p class="col-12">${{product.price}}</p>
+        <form class="row col-12 justify-content-center" (ngSubmit)="addCart()">
+            <select class="select-input" name="amount" [(ngModel)]="amount">
+                <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" value={{i}}>{{i}}</option>
+            </select>
+            <div class="col-12">
+                <button class="btn btn-primary"  type="submit">Add to cart</button>
+            </div>
+        </form>
+    </div>
+</div>
+<footer class="mb-5"></footer>
