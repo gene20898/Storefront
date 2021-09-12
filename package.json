@@ -7,7 +7,8 @@
     "frontend:install": "cd store_frontend && npm install",
     "backend:install": "cd store_backend && npm install",
     "frontend:build": "cd store_frontend && npm run build",
-    "backend:build": "cd store_backend && npm run build"
+    "backend:build": "cd store_backend && npm run build",
+    "frontend:deploy": "cd store_frontend && npm run deploy"
   },
   "author": "",
   "license": "ISC"
