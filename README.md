@@ -40,7 +40,7 @@ Start the project
 npm start
 ```
 ## Project Architecture
-![Storefront Architecture](https://user-images.githubusercontent.com/39151382/132993814-b6d9a6b5-dff8-4b24-ba64-37d229b5ecb3.png)
+![Storefront Architecture](https://user-images.githubusercontent.com/39151382/132994233-06cd9f95-4495-41f5-a1ae-57f7aa738bc6.jpg)
 
 This project is hosted on AWS cloud. 
 - Amazon RDS is used for hosting postgres database.
@@ -68,6 +68,10 @@ S3c Bucket policy
 
 S3 Bucket CORS configuration
 ![s3-cors](https://user-images.githubusercontent.com/39151382/132994036-b8a03f85-4ba7-4b3c-a5e3-cfbe47fdcc23.png)
+
+### Screenshot of last build in CircleCi
+![circleci1](https://user-images.githubusercontent.com/39151382/132994242-55740297-fbf7-4376-9332-02e3bce9d563.png)
+![circleci2](https://user-images.githubusercontent.com/39151382/132994243-22def9c3-eff1-432f-8134-f8c5575ab2f0.png)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
