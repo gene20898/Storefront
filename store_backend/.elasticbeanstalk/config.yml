@@ -16,3 +16,5 @@ global:
   platform_version: null
   sc: null
   workspace_type: Application
+deploy:
+  artifact: www/Archive.zip
