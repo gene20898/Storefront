@@ -1,4 +1,5 @@
 # Storefront
+[![CircleCI](https://circleci.com/gh/gene20898/Storefront/tree/master.svg?style=svg)](https://circleci.com/gh/gene20898/Storefront/tree/master)
 
 Storefront is a simple e-commerce website built with Angular, Node.js and Postgres. It provided API endpoints with a full CRUD operation, which each of them are secured with the simple authenication and encryption. It also implemented some basic CI/CD with CircleCI.
 
