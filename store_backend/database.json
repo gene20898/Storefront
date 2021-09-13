@@ -8,7 +8,7 @@
     },
     "test": {
       "driver": "pg",
-      "host": "127.0.0.0",
+      "host": "127.0.0.1",
       "database": "store_backend_test",
       "user": "store_backend_user",
       "password": "password123"
