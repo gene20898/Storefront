@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AuthModule } from '@auth0/auth0-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { ProductItemDetailsComponent } from './components/product-item-details/product-item-details.component';
+import { AuthButtonComponent } from './components/auth-button/auth-button.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,14 +22,19 @@ import { ProductItemDetailsComponent } from './components/product-item-details/p
     CartComponent,
     ProductItemComponent,
     HeaderComponent,
-    ProductItemDetailsComponent
+    ProductItemDetailsComponent,
+    AuthButtonComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AuthModule.forRoot({
+      domain: 'dev-35p-vy7k.us.auth0.com',
+      clientId: 'AYTkcAxg59khNHCxSX2bsXeNVvelUbw3'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

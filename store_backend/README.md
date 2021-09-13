@@ -48,7 +48,7 @@ start by run
 
 # Api endpoints
 ## Users 
-**Create user:** send POST request to http://localhost:3000/users with the body in JSON format as following:
+**Create user:** send POST request to http://localhost:8080/users with the body in JSON format as following:
 ```
 {
   "username":"Steven123",
@@ -57,23 +57,23 @@ start by run
   "password":"password1234"
 }
 ```
-**Authenticate:** send POST request to http://localhost:3000/users/authenticate with the body in JSON format as following:
+**Authenticate:** send POST request to http://localhost:8080/users/authenticate with the body in JSON format as following:
 ```
 {
   "username":"Steven123",
   "password":"password1234"
 }
 ```
-**Show:** send GET request to http://localhost:3000/users/:id with the body in JSON format as following [required JTWs token]:
+**Show:** send GET request to http://localhost:8080/users/:id with the body in JSON format as following [required JTWs token]:
 ```
 {
   "id":1
 }
 ```
-**Index:** send GET request to http://localhost:3000/users [required JTWs token]
+**Index:** send GET request to http://localhost:8080/users [required JTWs token]
 
 ## Product
-**Create:** send POST request to http://localhost:3000/products with the body in JSON format as following [required JTWs token]:
+**Create:** send POST request to http://localhost:8080/products with the body in JSON format as following [required JTWs token]:
 ```
   {
       "name": "Shirt",
@@ -84,30 +84,30 @@ start by run
 }
 
 ```
-**Show:** send GET request to http://localhost:3000/product/:id with the body in JSON format as following:
+**Show:** send GET request to http://localhost:8080/product/:id with the body in JSON format as following:
 ```
 {
   "id":1
 }
 ```
-**Index:** send GET request to http://localhost:3000/products
+**Index:** send GET request to http://localhost:8080/products
 
 ## Dashboard
-**Get top five popular product:** send GET request to http://localhost:3000/dashboard/top-five-products
+**Get top five popular product:** send GET request to http://localhost:8080/dashboard/top-five-products
 
-**Get products from category:** send GET request to http://localhost:3000/dashboard/products/:category with the body in JSON format as following [required JTWs token]:
+**Get products from category:** send GET request to http://localhost:8080/dashboard/products/:category with the body in JSON format as following [required JTWs token]:
 ```
 {
   "category":"plant"
 }
 ```
-**Get current order from user id:** send GET request to app.get http://localhost:3000/dashboard/orders/current/:user_id with the body in JSON format as following [required JTWs token]:
+**Get current order from user id:** send GET request to app.get http://localhost:8080/dashboard/orders/current/:user_id with the body in JSON format as following [required JTWs token]:
 ```
 {
   "user_id":1
 }
 ```
-**Get complete order from user id:** send GET request to app.get http://localhost:3000/dashboard/orders/complete/:user_id with the body in JSON format as following [required JTWs token]:
+**Get complete order from user id:** send GET request to app.get http://localhost:8080/dashboard/orders/complete/:user_id with the body in JSON format as following [required JTWs token]:
 ```
 {
   "user_id":1
