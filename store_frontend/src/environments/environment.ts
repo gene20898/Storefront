@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiHost: "http://storefront-env.eba-3bvrzt4c.ap-southeast-1.elasticbeanstalk.com"
+  apiHost: "http://localhost:8080"
 
 };
 

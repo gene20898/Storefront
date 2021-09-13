@@ -1,16 +1,16 @@
 {
     "dev": {
       "driver": "pg",
-      "host": "database-1.convvy0pbrha.ap-southeast-1.rds.amazonaws.com",
-      "database": "postgres",
-      "user": "postgres",
-      "password": "gene20898"
+      "host": {"ENV": "POSTGRES_HOST"},
+      "database": {"ENV": "POSTGRES_DB"},
+      "user": {"ENV": "POSTGRES_USER"},
+      "password": {"ENV": "POSTGRES_PASSWORD"}
     },
     "test": {
       "driver": "pg",
-      "host": "127.0.0.1",
-      "database": "store_backend_test",
-      "user": "store_backend_user",
-      "password": "password123"
+      "host": {"ENV": "POSTGRES_HOST_TEST"},
+      "database": {"ENV": "POSTGRES_TEST_DB"},
+      "user": {"ENV": "POSTGRES_USER"},
+      "password": {"ENV": "POSTGRES_PASSWORD"}
     }
 }
