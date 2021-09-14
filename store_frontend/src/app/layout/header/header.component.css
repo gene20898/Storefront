@@ -11,3 +11,13 @@
   span {
     color: #ffffff;
   }
+  
+  app-auth-button  {
+  }
+
+@media only screen and (min-width: 575.98px) { 
+  app-auth-button  {
+    position: absolute;
+    right: 0;
+  }
+  }

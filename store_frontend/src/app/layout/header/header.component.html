@@ -1,8 +1,19 @@
 <div class="header">
     <h1>MyStore</h1>
-    <a routerLink="/">Product List</a>
-    <span> | </span>
-    <a routerLink="/cart">Cart</a>
-    <span> 🛒</span>
-    <app-auth-button>Login</app-auth-button>
+    <div class=" my-3">
+        <div class="text-center d-sm-inline-block position-relative my-3 my-sm-0">
+            <a routerLink="/">🏷️ Product List</a>
+            <span> | </span>
+            
+            <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+                <a routerLink="/cart"> 🛒 Cart</a>
+            </ng-container>
+            <ng-template #loggedOut>
+                <a routerLink="" (click)="auth.loginWithRedirect()"><span> 🛒</span>Cart</a>
+            </ng-template>
+            <span> | </span>
+            <a routerLink="/order">📋 Order History</a>
+        </div>
+        <app-auth-button class="mr-sm-3 mr-0 mt-0"></app-auth-button>
+    </div>
 </div>

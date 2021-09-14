@@ -14,6 +14,7 @@ import { ProductItemComponent } from './components/product-item/product-item.com
 import { HeaderComponent } from './layout/header/header.component';
 import { ProductItemDetailsComponent } from './components/product-item-details/product-item-details.component';
 import { AuthButtonComponent } from './components/auth-button/auth-button.component';
+import { HistoryComponent } from './components/history/history.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { AuthButtonComponent } from './components/auth-button/auth-button.compon
     ProductItemComponent,
     HeaderComponent,
     ProductItemDetailsComponent,
-    AuthButtonComponent
+    AuthButtonComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
