@@ -1,5 +1,6 @@
 import Client from "../database";
 
+
 export type Order = {
     id?: number,
     status: string,
@@ -23,7 +24,7 @@ export class OrderStore {
             conn.release();
 
             return result.rows;
-        } catch (error) {
+        } catch (error: any) {
             throw new error(`Could not get orders. Error: ${error}`);
         }
     }
@@ -37,7 +38,7 @@ export class OrderStore {
             conn.release();
 
             return result.rows[0];
-        } catch (error) {
+        } catch (error: any) {
             throw new error(`Could not find orders ${id}. Error: ${error}`);
         }
     }
@@ -50,7 +51,7 @@ export class OrderStore {
             const result = await conn.query(sql,[o.status, o.user_id]);
             conn.release();
             return result.rows[0];
-        } catch (error) {
+        } catch (error: any) {
             throw new error(`Could not add new order. Error: ${error}`);
         }
     }
@@ -64,14 +65,10 @@ export class OrderStore {
             conn.release();
             
             return result.rows[0];
-        } catch (error) {
-            console.log(error);
-            
+        } catch (error: any) {            
             throw new error(`Could not delete order ${id}. Error: ${error}`);
         }
     }
-
-    
     
     async addProduct(op: order_product): Promise<order_product> {
         try {
@@ -82,8 +79,34 @@ export class OrderStore {
             conn.release();
             
             return result.rows[0];
-        } catch (error) {
+        } catch (error: any) {
             throw new error(`Could not add product ${op.product_id} to order ${op.order_id}. Error: ${error}`);
+        }
+    }
+
+    async showProduct(order_id: number): Promise<order_product[]> {
+        try {
+            const conn = await Client.connect()
+            const sql = `SELECT * from order_product WHERE order_id=($1)`;
+ 
+            const result = await conn.query(sql, [order_id]);
+            conn.release();
+            return result.rows;
+        } catch (error: any) {
+            throw new error(`Could not find product from order Error: ${error}`);
+        }
+    }
+
+    async userOrder(user_id: number): Promise<Order[]> {
+        try {
+            const conn = await Client.connect()
+            const sql = `SELECT * from orders WHERE user_id=($1)`;
+ 
+            const result = await conn.query(sql, [user_id]);
+            conn.release();
+            return result.rows;
+        } catch (error: any) {
+            throw new error(`Could not find orders Error: ${error}`);
         }
     }
 }

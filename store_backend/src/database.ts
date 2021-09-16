@@ -17,17 +17,14 @@ const{
 let Client: Pool|null = null;
 
 if(ENV === 'test') {    
-    console.log("Creating test local database connection");
     Client = new Pool({
         host: POSTGRES_HOST,
         database: POSTGRES_TEST_DB,
         user: POSTGRES_USER,
         password: POSTGRES_PASSWORD,
     })
-    console.log(Client);
 }
 if(ENV === 'dev') {
-    console.log("Creating dev local database connection");
     Client = new Pool({
         host: POSTGRES_HOST,
         port: 5432,
@@ -35,7 +32,6 @@ if(ENV === 'dev') {
         database: POSTGRES_DB,
         password: POSTGRES_PASSWORD,
       })
-    console.log(Client);
 }
 
 export default Client as Pool;

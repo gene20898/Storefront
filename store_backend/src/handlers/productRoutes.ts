@@ -5,7 +5,6 @@ import verifyAuthToken from '../services/authentication';
 const store = new ProductStore;
 
 const index = async (_req:Request, res:Response) => {
-    console.log("Enter index route");
     const products = await store.index();
     res.json(products);
 }

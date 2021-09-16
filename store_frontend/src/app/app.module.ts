@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { AuthModule } from '@auth0/auth0-angular';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthModule, AuthHttpInterceptor  } from '@auth0/auth0-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,10 @@ import { HeaderComponent } from './layout/header/header.component';
 import { ProductItemDetailsComponent } from './components/product-item-details/product-item-details.component';
 import { AuthButtonComponent } from './components/auth-button/auth-button.component';
 import { HistoryComponent } from './components/history/history.component';
+
+import { environment } from '../environments/environment';
+
+const API_HOST = environment.apiHost;
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,10 +39,27 @@ import { HistoryComponent } from './components/history/history.component';
     FormsModule,
     AuthModule.forRoot({
       domain: 'dev-35p-vy7k.us.auth0.com',
-      clientId: 'AYTkcAxg59khNHCxSX2bsXeNVvelUbw3'
+      clientId: 'AYTkcAxg59khNHCxSX2bsXeNVvelUbw3',
+    
+      audience: `${API_HOST}/api/v2/`,
+      scope: 'read:current_user',
+
+      httpInterceptor: {
+        allowedList: [
+          {
+            uri: `${API_HOST}/api/v2/*`,
+            tokenOptions: {
+              audience: `${API_HOST}/api/v2/`,
+              scope: 'read:current_user'
+            }
+          }
+        ]
+      }
     }),
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

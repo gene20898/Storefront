@@ -1,5 +1,4 @@
 import { OrderStore } from "../../models/orders";
-import { ProductStore } from "../../models/products";
 
 const orderStore = new OrderStore;
 
@@ -38,11 +37,11 @@ describe('Order Model', () => {
     
       it('index method should return a list of order', async () => {
         const result = await orderStore.index();
-        expect(result).toEqual([{
+        expect(result[0]).toEqual({
           id: 1,
           status: "active",
           user_id: 1
-        }]);
+        });
       });
     
       it('show method should return the correct order', async () => {
@@ -66,5 +65,24 @@ describe('Order Model', () => {
           product_id : 1,
           quantity: 20
         });
+      });
+
+      it('should show product list from order', async () => {
+        const result = await orderStore.showProduct(1);
+        expect(result).toEqual([{
+          id: 1,
+          order_id: 1,
+          product_id : 1,
+          quantity: 20
+        }]);
+      });
+
+      it('should show order list from user', async () => {
+        const result = await orderStore.userOrder(1);
+        expect(result).toEqual([{
+          id: 1,
+          status: "active",
+          user_id: 1
+        }]);
       });
 });

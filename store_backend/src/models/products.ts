@@ -12,9 +12,7 @@ export type Product = {
 export class ProductStore {
     async index(): Promise<Product[]> {
         try {
-            console.log("Enter product model");
             const conn = await Client.connect()
-            console.log("Database connected");
             const sql = 'SELECT * FROM products'
 
             const result = await conn.query(sql);
@@ -22,7 +20,6 @@ export class ProductStore {
 
             return result.rows;
         } catch (error:any) {
-            console.log(error);
             throw new error(`Could not get products. Error: ${error}`);
         }
     }

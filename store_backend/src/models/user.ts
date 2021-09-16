@@ -40,9 +40,7 @@ export class UserStore {
 
     async create(user: User): Promise<User> {
         try {
-            console.log("Enter user model");
             const conn = await Client.connect();
-            console.log("Databse conencted");
 
             const sql = 'INSERT INTO users (username, firstName, lastName, password_digest) VALUES($1, $2, $3, $4) RETURNING *';
     
@@ -52,13 +50,11 @@ export class UserStore {
                 parseInt(SALT_ROUNDS as string)
             );
 
-            console.log("Hashed");
             const result = await conn.query(sql,[user.username, user.firstName, user.lastName, hash]);
             conn.release();
             
             return result.rows[0];
         } catch (error: any) {
-            console.log(error);
             throw new error(`Could not add new user. Error: ${error}`);
         }
     }

@@ -14,7 +14,7 @@ export class DashboardQueries {
             conn.release();
 
             return result.rows;
-        } catch (error) {
+        } catch (error: any) {
             throw new error(`Could not get five most popular products. Error: ${error}`);
         }
     };
@@ -28,7 +28,7 @@ export class DashboardQueries {
             conn.release();
 
             return result.rows;
-        } catch (error) {
+        } catch (error: any) {
             throw new error(`Could not find products from the given category. Error: ${error}`);
         }
     }
@@ -42,7 +42,7 @@ export class DashboardQueries {
             conn.release();
 
             return result.rows[0];
-        } catch (error) {
+        } catch (error: any) {
             throw new error(`Could not find current order Error: ${error}`);
         }
     }
@@ -56,9 +56,10 @@ export class DashboardQueries {
             conn.release();
 
             return result.rows;
-        } catch (error) {
+        } catch (error: any) {
             throw new error(`Could not find complete orders Error: ${error}`);
         }
     }
-    
+
+
 }

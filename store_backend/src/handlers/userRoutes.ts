@@ -16,7 +16,6 @@ const show = async (req:Request, res:Response) => {
 }
 
 const create = async (req:Request, res:Response) => {   
-    console.log("Enter user create route")
     try {
         const user: User = {
             username: req.body.username,
@@ -28,7 +27,6 @@ const create = async (req:Request, res:Response) => {
         var token = jwt.sign({user: newUser}, process.env.TOKEN_SECRET as jwt.Secret);
         res.json(token);
     } catch(err) {
-        console.log(err);
         res.status(400)
         res.json(err)
     }
