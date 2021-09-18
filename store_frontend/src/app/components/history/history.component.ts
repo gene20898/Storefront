@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-
-
+import { OrderHistory } from 'src/app/models/Order';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-history',
@@ -11,9 +10,26 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class HistoryComponent implements OnInit {
 
-  constructor(public auth: AuthService) { }
+  orderHistory: OrderHistory[] = [];
+  userID: string = '';
+  constructor(
+    public auth: AuthService,
+    private order:OrderService
+    ) { }
 
   ngOnInit(): void {
+    console.log("On init");
+    this.auth.user$.subscribe(
+      (profile) => {
+        console.log("Subscribe")
+        this.userID = profile?.sub as string
+        console.log(`User id: ${this.userID}`);
+        this.order.getOrder(this.userID).subscribe(res => {
+          this.orderHistory = res;
+          console.log(JSON.stringify(res));
+        })
+      }
+    )
+    console.log("End");
   }
-
 }

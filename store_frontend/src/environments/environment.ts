@@ -4,8 +4,15 @@
 
 export const environment = {
   production: false,
-  apiHost: "http://localhost:8080"
-
+  apiHost: "http://localhost:8080",
+  auth: {
+    domain: "dev-35p-vy7k.us.auth0.com",
+    clientId: "AYTkcAxg59khNHCxSX2bsXeNVvelUbw3",
+    audience: "http://localhost:8080/order"
+  },
+  dev: {
+    serverUrl: "http://localhost:8080",
+  },
 };
 
 /*

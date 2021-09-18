@@ -1,1 +1,9 @@
-<router-outlet></router-outlet>
+<div id="app" class="d-flex flex-column h-100">
+  <div class="container" *ngIf="auth.isLoading$ | async; else loaded">
+  </div>
+
+  <ng-template #loaded>
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+  </ng-template>
+</div>

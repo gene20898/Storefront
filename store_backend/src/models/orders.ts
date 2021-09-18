@@ -4,7 +4,7 @@ import Client from "../database";
 export type Order = {
     id?: number,
     status: string,
-    user_id: number
+    user_id: string
 };
 
 export type order_product = {
@@ -97,7 +97,7 @@ export class OrderStore {
         }
     }
 
-    async userOrder(user_id: number): Promise<Order[]> {
+    async userOrder(user_id: string): Promise<Order[]> {
         try {
             const conn = await Client.connect()
             const sql = `SELECT * from orders WHERE user_id=($1)`;
@@ -106,6 +106,7 @@ export class OrderStore {
             conn.release();
             return result.rows;
         } catch (error: any) {
+            console.log(error)
             throw new error(`Could not find orders Error: ${error}`);
         }
     }

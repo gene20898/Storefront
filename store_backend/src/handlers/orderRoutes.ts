@@ -1,10 +1,11 @@
 import express, {Request, Response} from 'express';
 import { Order, order_product, OrderStore } from '../models/orders';
-import verifyAuthToken from '../services/authentication';
+import jwtCheck from '../services/auth0'
 
 const store = new OrderStore;
 
 const index = async (_req:Request, res:Response) => {
+    console.log("Rnter index")
     const orders = await store.index();
     res.json(orders);
 }
@@ -15,6 +16,7 @@ const show = async (req:Request, res:Response) => {
 }
 
 const create = async (req:Request, res:Response) => {
+    console.log(`Enter create:${JSON.stringify(req.body)}`)
     try {
         const order: Order = {
             status: req.body.status,
@@ -29,16 +31,19 @@ const create = async (req:Request, res:Response) => {
                 product_id: product_list[i].product_id,
                 quantity: product_list[i].quantity
             }
-            const newOrder_product = await store.addProduct(order_product);
+            await store.addProduct(order_product);
         }
-        res.json({newOrder, product_list})
+        res.json(newOrder)
+        console.log(`order created: ${newOrder}`)
     } catch(err) {
+        console.log(err);
         res.status(400)
         res.json(err)
     }
 }
 
 const getOrder = async (req:Request, res:Response) => {
+    console.log("Get order")
     const order: Order[] = await store.userOrder(req.body.user_id);
     let result: {order: Order, product_list: order_product[]}[]=[];
     for(let i = 0; i < order.length; i++){
@@ -51,8 +56,8 @@ const getOrder = async (req:Request, res:Response) => {
 const orderRoutes = (app: express.Application) => {
     app.get('/orders', index)
     app.get('/orders/:id', show)
-    app.post('/orders', verifyAuthToken, create)
-    app.get('/order_history', verifyAuthToken, getOrder)
+    app.post('/orders', create)
+    app.post('/order_history',jwtCheck, getOrder)
 }
 
 export default orderRoutes

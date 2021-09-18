@@ -18,7 +18,6 @@ import { HistoryComponent } from './components/history/history.component';
 
 import { environment } from '../environments/environment';
 
-const API_HOST = environment.apiHost;
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +29,7 @@ const API_HOST = environment.apiHost;
     ProductItemDetailsComponent,
     AuthButtonComponent,
     HistoryComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -38,22 +37,12 @@ const API_HOST = environment.apiHost;
     HttpClientModule,
     FormsModule,
     AuthModule.forRoot({
-      domain: 'dev-35p-vy7k.us.auth0.com',
-      clientId: 'AYTkcAxg59khNHCxSX2bsXeNVvelUbw3',
-    
-      audience: `${API_HOST}/api/v2/`,
-      scope: 'read:current_user',
-
+      domain: environment.auth.domain,
+      clientId: environment.auth.clientId,
+      redirectUri: window.location.origin,
+      audience: environment.auth.audience,
       httpInterceptor: {
-        allowedList: [
-          {
-            uri: `${API_HOST}/api/v2/*`,
-            tokenOptions: {
-              audience: `${API_HOST}/api/v2/`,
-              scope: 'read:current_user'
-            }
-          }
-        ]
+        allowedList: [`${environment.dev.serverUrl}/order_history`, `${environment.dev.serverUrl}/orders`],
       }
     }),
   ],
