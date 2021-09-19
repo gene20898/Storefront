@@ -21,5 +21,6 @@ S3 Bucket CORS configuration
 ![s3-cors](https://user-images.githubusercontent.com/39151382/132994036-b8a03f85-4ba7-4b3c-a5e3-cfbe47fdcc23.png)
 
 # Screenshot of last build in CircleCi
-![circleci1](https://user-images.githubusercontent.com/39151382/132994242-55740297-fbf7-4376-9332-02e3bce9d563.png)
-![circleci2](https://user-images.githubusercontent.com/39151382/132994243-22def9c3-eff1-432f-8134-f8c5575ab2f0.png)
+
+![circleci1](https://user-images.githubusercontent.com/39151382/133917199-cd21b774-c1b6-4ef6-80d5-cdbb0f7bde7c.png)
+![circleci2](https://user-images.githubusercontent.com/39151382/133917200-b73f9a34-20e7-4321-87d5-463f216111b5.png)
