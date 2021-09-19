@@ -4,7 +4,7 @@ export const environment = {
   auth: {
     domain: "dev-35p-vy7k.us.auth0.com",
     clientId: "AYTkcAxg59khNHCxSX2bsXeNVvelUbw3",
-    audience: "https://storefront-env.eba-3bvrzt4c.ap-southeast-1.elasticbeanstalk.com"
+    audience: "https://api.saberbeagle.com"
   },
   dev: {
     serverUrl: "https://api.saberbeagle.com",
