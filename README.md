@@ -6,7 +6,7 @@ Storefront is a simple e-commerce website built with Angular, Node.js and Postgr
 This project is created as a final project for Udacity Fullstack Javascript Developer nanodegree.
 
 ## Link for the website
-http://udacity-project-gene-s3.s3-website-ap-southeast-1.amazonaws.com
+https://d3pn30al8ue4ck.cloudfront.net
 
 ## Application guide
 Login then add the product to cart.
