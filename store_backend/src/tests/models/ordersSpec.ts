@@ -26,12 +26,12 @@ describe('Order Model', () => {
       it('create method should add a order', async () => {
         const result = await orderStore.create({
           status: "active",
-          user_id: 1
+          user_id: "1"
         })
          expect(result).toEqual({
           id: 1,
           status: "active",
-          user_id: 1
+          user_id: "1"
         });
       });
     
@@ -40,7 +40,7 @@ describe('Order Model', () => {
         expect(result[0]).toEqual({
           id: 1,
           status: "active",
-          user_id: 1
+          user_id: "1"
         });
       });
     
@@ -49,7 +49,7 @@ describe('Order Model', () => {
         expect(result).toEqual({
           id: 1,
           status: "active",
-          user_id: 1
+          user_id: "1"
         });
       });
 
@@ -78,11 +78,11 @@ describe('Order Model', () => {
       });
 
       it('should show order list from user', async () => {
-        const result = await orderStore.userOrder(1);
+        const result = await orderStore.userOrder("1");
         expect(result).toEqual([{
           id: 1,
           status: "active",
-          user_id: 1
+          user_id: "1"
         }]);
       });
 });

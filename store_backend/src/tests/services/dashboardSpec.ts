@@ -29,7 +29,7 @@ describe('DashboardQueries Services', () => {
         expect(result).toEqual({
             id: 1,
             status: 'active',
-            user_id: 1
+            user_id: "1"
         });
     });
     it('currentOrder method should return the complete order from user id', async () => {
