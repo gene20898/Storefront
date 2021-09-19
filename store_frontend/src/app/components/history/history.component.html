@@ -1,3 +1,22 @@
-<div>
-  {{orderHistory}}
+<div class="container">
+  <div class="row align-items-center px-sm-0 px-3">
+    <h2 class="mt-5 mb-2 mx-sm-0 mx-3">Order history</h2>
+          <div *ngFor="let o of orderHistory" class="col-12 my-3 bg-light rounded p-4">
+            <h5>Order id: {{o.order.id}}</h5>
+            <p>order status: {{o.order.status}}</p>
+            <div *ngFor="let product of o.product_list" class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3  d-inline-block p-0">
+              {{findProduct(product.product_id)}}
+              <div class="product bg-white p-2 m-1 border">
+                <div class="col-6 p-0 m-0 d-inline">
+                  <img src="{{currentProduct.url}}">
+                </div>
+                <div class="d-inline-block p-3 col-6">
+                  <p><b>{{currentProduct.name}}</b></p>
+                  <p>quantity: {{product.quantity}}</p>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+  </div>
 </div>

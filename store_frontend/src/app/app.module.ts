@@ -17,6 +17,7 @@ import { AuthButtonComponent } from './components/auth-button/auth-button.compon
 import { HistoryComponent } from './components/history/history.component';
 
 import { environment } from '../environments/environment';
+import { LoadingComponent } from './layout/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { environment } from '../environments/environment';
     HeaderComponent,
     ProductItemDetailsComponent,
     AuthButtonComponent,
-    HistoryComponent
+    HistoryComponent,
+    LoadingComponent
     ],
   imports: [
     BrowserModule,

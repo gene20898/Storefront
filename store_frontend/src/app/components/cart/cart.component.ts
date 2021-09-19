@@ -57,7 +57,6 @@ export class CartComponent implements OnInit {
       (profile) => {
         if(!this.isOrderSent){
           this.userID = profile?.sub as string;
-          console.log(`User id: ${this.userID}`);
           const result = this.order.createOrder({
             status: "active",
             user_id: this.userID,

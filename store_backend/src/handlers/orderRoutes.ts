@@ -34,7 +34,6 @@ const create = async (req:Request, res:Response) => {
             await store.addProduct(order_product);
         }
         res.json(newOrder)
-        console.log(`order created: ${newOrder}`)
     } catch(err) {
         console.log(err);
         res.status(400)
@@ -43,7 +42,6 @@ const create = async (req:Request, res:Response) => {
 }
 
 const getOrder = async (req:Request, res:Response) => {
-    console.log("Get order")
     const order: Order[] = await store.userOrder(req.body.user_id);
     let result: {order: Order, product_list: order_product[]}[]=[];
     for(let i = 0; i < order.length; i++){
