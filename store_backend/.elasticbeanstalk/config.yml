@@ -18,3 +18,8 @@ global:
   workspace_type: Application
 deploy:
   artifact: www/Archive.zip
+option_settings:
+  aws:elb:listener:443:
+    SSLCertificateId: arn:aws:acm:ap-southeast-1:887421295499:certificate/fc862a0b-84dc-48b5-aba5-6814f4a9da42
+    ListenerProtocol: HTTPS
+    InstancePort: 80
