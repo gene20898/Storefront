@@ -9,7 +9,8 @@
     "frontend:build": "cd store_frontend && npm run build",
     "backend:build": "cd store_backend && npm run build",
     "frontend:deploy": "cd store_frontend && npm run deploy",
-    "backend:deploy" : "cd store_backend && npm run deploy"
+    "backend:deploy" : "cd store_backend && npm run deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC"

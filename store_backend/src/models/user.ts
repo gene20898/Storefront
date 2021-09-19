@@ -1,5 +1,6 @@
 import Client from "../database";
 import bcrypt from "bcrypt";
+import { config } from "../config";
 
 export type User = {
     id?: number,
@@ -44,10 +45,9 @@ export class UserStore {
 
             const sql = 'INSERT INTO users (username, firstName, lastName, password_digest) VALUES($1, $2, $3, $4) RETURNING *';
     
-            const {SALT_ROUNDS, PEPPER} = process.env;
             const hash = bcrypt.hashSync(
-                user.password_digest + PEPPER, 
-                parseInt(SALT_ROUNDS as string)
+                user.password_digest + config.pepper, 
+                parseInt(config.salt as string)
             );
 
             const result = await conn.query(sql,[user.username, user.firstName, user.lastName, hash]);
@@ -82,7 +82,7 @@ export class UserStore {
         if(result.rows.length) {
           const user = result.rows[0]
           
-          if (bcrypt.compareSync(password+process.env.PEPPER, user.password_digest)) {
+          if (bcrypt.compareSync(password+config.pepper, user.password_digest)) {
             return user
           }
         }
