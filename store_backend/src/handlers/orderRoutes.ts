@@ -16,7 +16,6 @@ const show = async (req:Request, res:Response) => {
 }
 
 const create = async (req:Request, res:Response) => {
-    console.log(`Enter create:${JSON.stringify(req.body)}`)
     try {
         const order: Order = {
             status: req.body.status,
