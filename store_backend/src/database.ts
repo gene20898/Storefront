@@ -11,6 +11,7 @@ if(config.env === 'test') {
         user: config.username,
         password: config.password,
     })
+
 }
 if(config.env === 'dev') {
     Client = new Pool({

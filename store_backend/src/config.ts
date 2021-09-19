@@ -15,5 +15,5 @@ export const config = {
     audience: process.env.AUTH_AUDIENCE,
     issuer: process.env.AUTH_ISSUER,
     token: process.env.TOKEN_SECRET
-} = process.env
+}
 
